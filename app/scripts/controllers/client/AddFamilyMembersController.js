@@ -29,7 +29,7 @@
                 location.path('/viewclient/'+clientId);
             }
 
-            scope.addClientMember=function()
+            scope.submit=function()
             {
 
 

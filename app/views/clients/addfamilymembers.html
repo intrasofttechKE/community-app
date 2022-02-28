@@ -1,15 +1,19 @@
 <div ng-controller="AddFamilyMembersController">
 
 
-    <form name="familymemberInfo" novalidate="" class="form-horizontal well" >
+    <form name="familymemberInfo" novalidate="" class="form-horizontal well" rc-submit="submit()">
         <api-validate></api-validate>
         <fieldset>
 
             <div class="form-group" >
-                <label class="control-label col-sm-2" for="firstName">{{'label.input.firstname' | translate }}</label>
+                <label class="control-label col-sm-2" for="firstName">{{'label.input.firstname' | translate }}
+                    <span class="required">*</span></label>
 
                 <div class="col-sm-3">
-                    <input type="text" id="firstName" name="firstName"  ng-model="formData.firstName"  class="form-control">
+                    <input type="text" id="firstName" name="firstName"  ng-model="formData.firstName"  class="form-control" required>
+                </div>
+                <div class="col-sm-2">
+                    <form-validate valattributeform="familymemberInfo" valattribute="firstName"/>
                 </div>
 
             </div>
@@ -72,12 +76,16 @@
 
             <div class="form-group">
                 <div class="control-label col-sm-2">
-                    <label>{{ 'label.input.relationship' | translate }}</label>
+                    <label>{{ 'label.input.relationship' | translate }}
+                        <span class="required">*</span></label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="relationshipIdOptions" id="relationshipIdOption" ng-model="formData.relationshipId"  class="form-control"
+                    <select chosen="relationshipIdOptions" id="relationshipIdOption" ng-model="formData.relationshipId"  class="form-control" required
                             ng-options="relationshipIdOption.id as relationshipIdOption.name for relationshipIdOption in relationshipIdOptions track by relationshipIdOption.id"
                             value="formData.relationshipId"></select>
+                </div>
+                <div class="col-sm-2">
+                    <form-validate valattributeform="familymemberInfo" valattribute="firstName"/>
                 </div>
             </div>
             <div>
@@ -124,7 +132,7 @@
 
                 <div class="col-sm-3">
                     <input id="dateofbirth" type="text" name="dateofbirth" datepicker-pop="dd MMMM yyyy"
-                           ng-model="date.dateOfBirth" is-open="opened1" max="restrictDate"  class="form-control"/>
+                           ng-model="date.dateOfBirth" is-open="opened1" min="'1922-01-01'" max="restrictDate"  class="form-control"/>
                 </div>
 
             </div>
@@ -134,12 +142,9 @@
                 <button id="cancel"   ng-click="routeTo()" class="btn btn-primary">{{
                     'label.button.cancel' | translate }}
                 </button>
-
-
-
-                <button id="edit"  ng-click="addClientMember()" class="btn btn-primary">{{
-                    'label.button.submit' | translate }}
-                </button>
+                
+                <button id="save2" type="submit" class="btn btn-primary" ng-hide="blockUI"
+                        has-permission='CREATE_FAMILYMEMBERS'>{{'label.button.save' | translate}}</button>
 
             </div>
 
