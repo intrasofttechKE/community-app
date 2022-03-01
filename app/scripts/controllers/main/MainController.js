@@ -285,6 +285,9 @@
             keyboardManager.bind('ctrl+shift+n', function () {
                 location.path('/nav/offices');
             });
+            keyboardManager.bind('ctrl+shift+v', function () {
+                location.path('/nav/offices');
+            });
             keyboardManager.bind('ctrl+shift+i', function () {
                 location.path('/tasks');
             });
