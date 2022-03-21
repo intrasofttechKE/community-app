@@ -101,7 +101,7 @@
 						<table class="table table-bordered" ng-show="collectionsheetdata" data-anchor>
 							<thead>
 							<tr>
-								<td class="col-md-3">{{'label.heading.borrowername' | translate}}</td>
+								<td class="col-md-2">{{'label.heading.borrowername' | translate}}</td>
 								<th class="highlightcol" scope="colgroup"
 									colspan="{{collectionsheetdata.loanProducts.length}}">{{'label.heading.duecollections' |
 									translate}}
@@ -122,7 +122,7 @@
 								<th scope="colgroup" ng-repeat="savingproduct in collectionsheetdata.savingsProducts">
 									{{savingproduct.name}} ({{savingproduct.depositAccountType}})
 								</th>
-								<th>{{'label.heading.attendance' | translate}}</th>
+								<th  width="170px">{{'label.heading.attendance' | translate}}</th>
 							</tr>
 							</thead>
 							<tbody ng-repeat="group in collectionsheetdata.groups">
@@ -144,14 +144,14 @@
 									<td ng-repeat="loanproduct in collectionsheetdata.loanProducts">
 
 													<span ng-repeat="loan in client.loans" ng-show="loanproduct.id == loan.productId">
-				                                        <div class="col-md-7 paddinglr0px">
+				                                        <div class="col-md-15 paddinglr0px">
 				                                            <input id="total" type="text" class="input-sm form-control" number-format
 																   ng-model="loan.totalDue"
 																   ng-change="sumTotalDueCollection()">
 				                                        </div>
 														<span ng-hide="loan.chargesDue" ng-init="loan.chargesDue = 0">
 														</span>
-				                                        <div class="col-md-5 padd">
+				                                        <div class="col-md-15 padd">
 				                                            <input type="text" class="input-sm form-control" number-format ng-model="loan.chargesDue"
 																   ng-change="sumTotalDueCollection()">
 				                                        </div>
@@ -160,7 +160,7 @@
 									<td ng-repeat="savingsproduct in collectionsheetdata.savingsProducts">
 				                                <span ng-repeat="savings in client.savings"
 													  ng-show="savingsproduct.id === savings.productId">
-				                                    <div class="col-md-7">
+				                                    <div class="col-md-15">
 				                                        <input id="dueAmount" number-format type="text" class="input-sm form-control" number-format
 															   ng-model="savings.dueAmount"
 															   ng-change="sumTotalDueCollection()">
@@ -169,7 +169,7 @@
 									</td>
 									<td>
 										<select id="clientsAttendance[{{$index}}][attendanceType]"
-												ng-model="client.attendanceType.id" class="input-sm form-control"
+												ng-model="client.attendanceType.id" class="input-sm form-control col-md-18"
 												ng-options="attendance.id as attendance.value for attendance in collectionsheetdata.attendanceTypeOptions"
 												value="{{attendance.id}}">
 										</select>
