@@ -7,6 +7,7 @@
 			"វ័ណថារិទ្ធ"
 		]
 	},
+	"label.heading.collaterals": "វត្ថុបញ្ចាំ",
 	"label.heading.name": "ឈ្មោះ",
 	"label.heading.startdate": "កាលបរិច្ឆេទចាប់ផ្តើម",
 	"label.heading.accnum": "លេខគណនី",
@@ -957,7 +958,6 @@
 	"label.heading.guarantor": "អ្នកធានា",
 	"label.heading.createguarantor": "បង្កើតអ្នកធានា",
 	"label.heading.editloanaccount": "កែសម្រួលគណនីឥណទាន",
-	"label.heading.collaterals": "វត្ថុបញ្ចាំ",
 	"label.heading.value": "តម្លៃ",
 	"label.heading.loanamountandbalance": "ទំហំ និង សមតុល្យឥណទាន",
 	"label.heading.totalcostofloan": "ថ្លៃដើមសរុបនៃឥណទាន",
@@ -2122,7 +2122,6 @@
 	"label.selectstatus": "ជ្រើសរើសស្ថានភាព",
 	"label.selectchecker": "ជ្រើសរើសអ្នកត្រួតពិនិត្យ",
 	"label.loan": "ឥណទាន",
-	"label.savingsaccount": "គណនីសន្សំ",
 	"label.client": "អតិថិជន",
 	"label.group": "ក្រុម",
 	"label.center": "ប៉ុស្តិ៍សេវា",

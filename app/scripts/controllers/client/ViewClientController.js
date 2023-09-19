@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        ViewClientController: function (scope, routeParams, route, location, resourceFactory, http, $uibModal, API_VERSION, $rootScope, Upload) {
+        ViewClientController: function (scope, routeParams, route, location, resourceFactory, http, $uibModal, API_VERSION, $timeout, $rootScope, Upload) {
             scope.client = [];
             scope.identitydocuments = [];
             scope.buttons = [];
@@ -17,6 +17,8 @@
             scope.updateDefaultSavings = false;
             scope.charges = [];
             scope.legalform = 'm_client';
+
+            scope.collaterals = [];
 
 
             // address
@@ -96,22 +98,13 @@
 
             }
 
-
-            // end of address
-
-
             // family members
 
             scope.families=[];
 
-
-
-
             resourceFactory.familyMembers.get({clientId:routeParams.id},function(data)
             {
-
                 scope.families=data;
-
 
             });
 
@@ -124,6 +117,10 @@
                     route.reload();
                 })
 
+            }
+
+            scope.viewCollaterals=function() {
+                location.path('/clients/'+ routeParams.id +'/viewallclientcollaterals');
             }
 
             scope.editFamilyMember=function(clientFamilyMemberId)
@@ -171,11 +168,17 @@
 
             scope.routeToShareAccount = function(id) {
                 location.path('/viewshareaccount/'+id)
-            } ;
+            };
+
+            scope.routeToCollateral = function(id) {
+                location.path('/viewclient/' + routeParams.id + '/viewclientcollateral/' + id);
+            }
 
             scope.haveFile = [];
             resourceFactory.clientResource.get({clientId: routeParams.id}, function (data) {
                 scope.client = data;
+                scope.collaterals = scope.client.clientCollateralManagements;
+                scope.collateralSize = scope.collaterals.length;
                 scope.isClosedClient = scope.client.status.value == 'Closed';
                 scope.staffData.staffId = data.staffId;
                 if (data.imagePresent) {
@@ -1031,7 +1034,7 @@
         }
     });
 
-    mifosX.ng.application.controller('ViewClientController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', '$uibModal', 'API_VERSION', '$rootScope', 'Upload', mifosX.controllers.ViewClientController]).run(function ($log) {
+    mifosX.ng.application.controller('ViewClientController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', '$uibModal', 'API_VERSION', '$timeout', '$rootScope', 'Upload', mifosX.controllers.ViewClientController]).run(function ($log) {
         $log.info("ViewClientController initialized");
     });
 }(mifosX.controllers || {}));
